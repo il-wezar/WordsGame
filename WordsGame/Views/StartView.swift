@@ -74,6 +74,7 @@ struct StartView: View {
             .frame(maxWidth: .infinity)
             .ignoresSafeArea()
             .scaledToFill())
+        
         .alert("The word is too short!", isPresented: $isAlertPresent, actions: { })
         .fullScreenCover(isPresented: $isShowedGame) {
             let firstName = firstPlayer == "" ? "First Player" : firstPlayer
