@@ -28,9 +28,9 @@ struct StartView: View {
                 Spacer()
                 Button {
                     DispatchQueue.main.async {
-                        viewModel.getRandomWord()
-
                         bigWord = viewModel.wordModel.word
+
+                        viewModel.getRandomWord()
                     }
                 } label: {
                     Text("Random word")
@@ -42,15 +42,15 @@ struct StartView: View {
                 }
             }
             .frame(maxWidth: .infinity)
-
-
+            
+            
             WordsTextField(word: $firstPlayer, placeHolder: "First player")
                 .padding(.horizontal, 20)
                 .padding(.top, 15)
-
+            
             WordsTextField(word: $secondPlayer, placeHolder: "Second player")
                 .padding(.horizontal,20)
-
+            
             Button {
                 if bigWord.count > 6 {
                     isShowedGame.toggle()
@@ -87,6 +87,9 @@ struct StartView: View {
                                               word: bigWord)
             
             GameView(viewModel: gameViewModel)
+        }
+        .onAppear {
+            self.viewModel.getRandomWord()
         }
     }
 }

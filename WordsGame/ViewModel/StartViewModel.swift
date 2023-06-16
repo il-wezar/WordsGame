@@ -18,7 +18,6 @@ class StartViewModel: ObservableObject {
         DatabaseService.shared.getWord { result in
             switch result {
             case .success(let word):
-                print(word)
                 self.wordModel = word
             case .failure(let failure):
                 print(failure.localizedDescription)
